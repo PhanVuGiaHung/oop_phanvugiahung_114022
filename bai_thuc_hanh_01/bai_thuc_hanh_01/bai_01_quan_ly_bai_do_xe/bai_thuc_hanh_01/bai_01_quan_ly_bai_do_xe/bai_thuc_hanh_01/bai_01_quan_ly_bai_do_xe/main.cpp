@@ -10,7 +10,7 @@ private:
     int entryTime;
     int parkingDuration;
     double parkingFee;
-    bool c;
+    bool noSlot;
 
 public:
     Vehicle();
