@@ -2,82 +2,53 @@
 #include <string>
 using namespace std;
 
-//lop xe
-class Vehicle {
+class phuong_tien {
 private:
-    int vehicleID;
-    string vehicleType;
-    int entryTime;
-    int parkingDuration;
-    double parkingFee;
-    bool noSlot;
+    int ma_xe;
+    string loai_xe;
+    int gio_vao;
+    int tg_do;
 
 public:
-    Vehicle();
+    phuong_tien();
+    phuong_tien(int ma, string loai, int gio, int tg);
 
-    Vehicle(int id, string type, int time, int duration);
-
-    int getVehicleID() const;
-    string getVehicleType() const;
-    int getEntryTime() const;
-    int getParkingDuration() const;
-    double getParkingFee() const;
-    bool noSlot() const;
-
-    void setVehicleID(int id);
-    void setVehicleType(string type);
-    void setEntryTime(int time);
-    void setParkingDuration(int duration);
-    void setParkingFee(double fee);
-    void noSlot(bool status);
-
-    void calculateFee();
-    void display() const;
+    int lay_ma_xe() const;
+    string lay_loai_xe() const;
+    double tinh_phi() const;
+    void hien_thi() const;
 };
 
-//lop bai do xe
-class ParkingLot {
+class bai_xe {
 private:
-    int parkID;
-    char size;
-
-    Vehicle vehicle1;
-    Vehicle vehicle2;
-    Vehicle vehicle3;
-
-    bool hasVehicle1;
-    bool hasVehicle2;
-    bool hasVehicle3;
+    int ma_bai;
+    char kich_thuoc;
+    phuong_tien pt1, pt2, pt3; // sau này dùng mảng
+    bool co1, co2, co3;
 
 public:
-    ParkingLot();
+    bai_xe();
+    bai_xe(int ma, char kt);
 
-    ParkingLot(int id, char s);
-
-    bool addVehicle(const Vehicle& v);
-    bool removeVehicle(int vID);
-
-    void displayLotInfo();
+    int lay_ma() const;
+    bool them(phuong_tien v);
+    bool xoa(int ma_xe);
+    bool chua(int ma_xe) const;
+    void hien_thi() const;
+    bool co_loai(string loai, int& dem, double& tong) const;
 };
 
-//lop nay dung de dieu hanh (tam thoi 3 bai)
 class SystemInterface {
 private:
-    ParkingLot parkingLot1;
-    ParkingLot parkingLot2;
-    ParkingLot parkingLot3;
-
-    bool hasLot1;
-    bool hasLot2;
-    bool hasLot3;
+    bai_xe bai1, bai2, bai3; // sau này dùng mảng
+    bool co1, co2, co3; //có bãi xe 1, 2, 3 hay chưa? 
 
 public:
     SystemInterface();
-
-    void runMenu();
+    void runMenu();// cho phép ng dung chọn 1, 2, 3, 4, ...
+    //1 tạo bãi, 2 thêm xe, 3 xoá bãi, 4 lấy xe ra (xoá xe), 5 hiển thi, ...
 };
 
-int main() {
     SystemInterface system;
     system.runMenu();
 
