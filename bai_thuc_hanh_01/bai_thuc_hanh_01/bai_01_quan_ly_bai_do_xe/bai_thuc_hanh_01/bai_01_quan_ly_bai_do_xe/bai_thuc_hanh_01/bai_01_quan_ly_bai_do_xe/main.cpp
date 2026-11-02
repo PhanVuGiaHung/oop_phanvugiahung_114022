@@ -10,7 +10,7 @@ private:
     int entryTime;
     int parkingDuration;
     double parkingFee;
-    bool isOccupied;
+    bool c;
 
 public:
     Vehicle();
@@ -22,14 +22,14 @@ public:
     int getEntryTime() const;
     int getParkingDuration() const;
     double getParkingFee() const;
-    bool getIsOccupied() const;
+    bool noSlot() const;
 
     void setVehicleID(int id);
     void setVehicleType(string type);
     void setEntryTime(int time);
     void setParkingDuration(int duration);
     void setParkingFee(double fee);
-    void setIsOccupied(bool status);
+    void noSlot(bool status);
 
     void calculateFee();
     void display() const;
