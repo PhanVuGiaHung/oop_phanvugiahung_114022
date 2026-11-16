@@ -57,9 +57,9 @@ class bai_xe {
 private:
     int ma_bai;
     char kich_thuoc;
-    static const int MAX_VEHICLES = 3; // Sức chứa vật lý tối đa của một bãi
-    phuong_tien ds_xe[MAX_VEHICLES]; // Mảng tĩnh chứa xe (thay thế cho pt1, pt2, pt3)
-    int so_luong_xe; // Kích thước logic (số xe thực tế hiện có)
+    static const int MAX_VEHICLES = 3; 
+    phuong_tien ds_xe[MAX_VEHICLES];
+    int so_luong_xe; 
 
 public:
     bai_xe();
@@ -116,7 +116,7 @@ bool bai_xe::xoa(int ma_xe) {
     int idx = tim_vi_tri_xe(ma_xe);
     if (idx == -1) return false;
 
-    // Thuật toán dồn mảng dịch trái phần tử
+    
     for (int j = idx; j < so_luong_xe - 1; ++j) {
         ds_xe[j] = ds_xe[j + 1];
     }
@@ -162,9 +162,9 @@ void bai_xe::hien_thi_theo_loai(string loai) const {
 
 class SystemInterface {
 private:
-    static const int MAX_LOTS = 10; // Sức chứa vật lý tối đa 10 bãi đỗ
-    bai_xe ds_bai[MAX_LOTS]; // Mảng tĩnh chứa các bãi đỗ (thay thế cho bai1, bai2, bai3)
-    int so_luong_bai; // Kích thước logic số lượng bãi hiện có
+    static const int MAX_LOTS = 10; 
+    bai_xe ds_bai[MAX_LOTS]; 
+    int so_luong_bai; 
 
 public:
     SystemInterface();
@@ -267,7 +267,6 @@ void SystemInterface::runMenu() {
                 cout << "Thoi luong (1-23): "; 
                 cin >> tg;
 
-                // Xử lý trùng lặp ID xe toàn hệ thống
                 if (kiem_tra_ma_xe(ma)) {
                     int ma_cu = ma;
                     ma = sinh_ma_ngau_nhien();
@@ -277,8 +276,7 @@ void SystemInterface::runMenu() {
 
                 phuong_tien v(ma, loai, gio, tg);
                 bool ok = false;
-                
-                // Tự động tìm bãi đỗ đầu tiên còn chỗ trống
+               
                 for (int i = 0; i < so_luong_bai; ++i) {
                     if (!ds_bai[i].kiem_tra_day()) {
                         ds_bai[i].them(v);
@@ -310,7 +308,7 @@ void SystemInterface::runMenu() {
                 if (vi_tri_bai == -1) {
                     cout << "Khong tim thay bai do!\n";
                 } else {
-                    // Thuật toán dồn mảng cho danh sách bãi đỗ
+                    
                     for (int j = vi_tri_bai; j < so_luong_bai - 1; ++j) {
                         ds_bai[j] = ds_bai[j + 1];
                     }
