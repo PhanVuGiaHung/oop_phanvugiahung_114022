@@ -120,7 +120,7 @@ bool bai_xe::xoa(int ma_xe) {
     for (int j = idx; j < so_luong_xe - 1; ++j) {
         ds_xe[j] = ds_xe[j + 1];
     }
-    so_luong_xe--; // Giảm kích thước logic
+    so_luong_xe--; 
     return true;
 }
 
